@@ -1,0 +1,7 @@
+# 実案件プロファイルはこのリポジトリの外（作業ディレクトリの jira_profiles/ 等）に置く。
+# 万一ここに置かれても拾わないための安全網。
+profiles/
+jira_profiles/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,53 @@
+{
+ "date": "2026-07-09",
+ "links": [],
+ "new_tickets": [
+  {
+   "comment": null,
+   "fields": {
+    "description": "## 目的\n\nSite Bの Site Survey。担当者C担当。\n\n## Definition of Done\n\n- [ ] Survey Sheet 回収\n\n## Nice to Have\n\n- [ ] 回答の不足箇所を Network Diagram に反映\n\n## 備考\n\n* 担当: 担当者C（※[External]のためアサイン不可）\n* Survey Sheet: [https://drive.example/x](https://drive.example/x)\n",
+    "duedate": "2026-07-14",
+    "labels": [
+     "network",
+     "site-b"
+    ],
+    "summary": "Survey Sheet の回答を Partner から回収"
+   },
+   "issueTypeName": "Task",
+   "kind": "new",
+   "notes": [],
+   "origin": null,
+   "parent": "KAN-15",
+   "placeholder": "NEW-1",
+   "transition": null
+  }
+ ],
+ "profile": "example-sprint-kanban",
+ "tickets": {
+  "KAN-40": {
+   "comment": "## 2026-07-09 Customer Sync\n**議事録:** Default Gateway 変更は Customer 側で実施する方向で合意。工数は ACME が算出済み。\n**決定・経緯:** Customer が変更する。ACME は手順書を提供。\n**ACME アクション:** 手順書ドラフトを Customer に送付 — 担当: 担当者A — 期限: 2026-07-14\n**顧客 アクション:** 社内で変更作業の承認を取る — 担当: 担当者B — 期限: 2026-07-15\n**参考:** Network Diagram v3\n**出典:** 文字起こし l.12-20\n",
+   "description": "## 目的\n疎通失敗要因の一つ。\n\n## Definition of Done\n- [ ] 社内で作業工数を確認する\n- [ ] 顧客に変更可否を確認する\n\n### 7/9 (added)\n\n- [ ] 手順書ドラフトを Customer に送付\n",
+   "fields": {},
+   "notes": [],
+   "transition": {
+    "id": "31",
+    "to": "WAITING FOR CUSTOMER",
+    "why": "Customer 承認待ち"
+   }
+  },
+  "KAN-41": {
+   "comment": null,
+   "description": "## 目的\n\n## Definition of Done\n\n- [ ] 担当者Bへ再依頼メールを送る\n",
+   "fields": {
+    "assignee": "Member A",
+    "labels": [
+     "for-cust-mtg",
+     "site-a"
+    ]
+   },
+   "notes": [],
+   "transition": null
+  }
+ },
+ "tracker_url": ""
+}

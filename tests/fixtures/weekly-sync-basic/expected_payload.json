@@ -1,0 +1,42 @@
+{
+ "date": "2026-09-25",
+ "links": [],
+ "new_tickets": [
+  {
+   "comment": null,
+   "fields": {
+    "description": "## Background\n\n* Issue List: [9/25](https://example.com/sheet/2026-09-25)\n* Title: New\n\n## Definition of Done\n\n- [ ] Item — confirmed by user\n",
+    "duedate": "2026-10-02",
+    "labels": [
+     "no-30",
+     "weekly-sync"
+    ],
+    "summary": "[#30] New deliverable"
+   },
+   "issueTypeName": "Task",
+   "kind": "new",
+   "notes": [],
+   "origin": null,
+   "parent": "PRJ-10",
+   "placeholder": "NEW-1",
+   "transition": null
+  }
+ ],
+ "profile": "example-weekly-sync",
+ "tickets": {
+  "PRJ-40": {
+   "comment": "## 2026-09-25 Weekly Sync\n**Minutes:** Minutes\n**Decision / Background:** Decision\n**ACME action:** Send the document — Owner: Owner A — Due: 2026-10-02\n**Customer action:** Review — Owner: Customer — Due: TBC\n**Source:** transcript l.1-2\n\n---\n**議事録:** 議事\n**決定・経緯:** 決定\n**ACME アクション:** 資料送付 — 担当: 担当A — 期限: 2026-10-02\n**顧客 アクション:** 確認 — 担当: 顧客 — 期限: 未定\n",
+   "description": "## Background\n\n* Issue List: [9/25](https://example.com/sheet/2026-09-25)\n* Title: Work schedule\n\n## Definition of Done\n\n- [ ] Send the document\n",
+   "fields": {
+    "labels": [
+     "cust",
+     "no-12",
+     "weekly-sync"
+    ]
+   },
+   "notes": [],
+   "transition": null
+  }
+ },
+ "tracker_url": "https://example.com/sheet/2026-09-25"
+}

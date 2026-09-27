@@ -1,0 +1,1 @@
+{"gw": {"d": "Default Gateway 変更は Customer 側で実施する方向で合意。工数は ACME が算出済み。", "l": "Customer が変更する。ACME は手順書を提供。", "eown": "手順書ドラフトを Customer に送付", "fown": "担当者A", "gown": "2026-07-14", "ecust": "社内で変更作業の承認を取る", "fcust": "担当者B", "gcust": "2026-07-15", "ref": "Network Diagram v3", "src": "l.12-20"}}
