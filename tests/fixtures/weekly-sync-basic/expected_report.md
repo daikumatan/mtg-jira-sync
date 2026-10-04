@@ -1,6 +1,8 @@
 # Jira 同期ドライラン — 2026-09-25 Example 週次定例（顧客 X / フェーズ 1）（**未承認・Jira 未変更**）
 
-- プロファイル: `example-weekly-sync.md` / 管理表 URL: https://example.com/sheet/2026-09-25
+- プロファイル: `example-weekly-sync.md`
+- 管理表 URL: https://example.com/sheet/2026-09-25
+- 対象エピック: PRJ-10 / 系統ラベル: -
 - content: `content.json` / 提案設定: `proposals.json`
 
 ## 承認の受け方
@@ -28,7 +30,7 @@
 ### 2. フィールド差分（提案）
 - labels: +cust, no-12
 
-### 3. Description: Description 空 → Background 新設＋ DoD 新設
+### 3. Description: Description 空 → Background 新設（Title=トラッカー）＋ DoD 新設
 ```markdown
 ## Background
 
@@ -43,7 +45,7 @@
 #### DoD 出典（文字起こし抜粋・Jira には書かない）— 各項目の直下の発言が「〜します」型の約束か確認する
 - Send the document — TRACKER 9/25
 
-## 新規起票・分割・作り直し（`createJiraIssue` → 返った key で placeholder を置換してからリンク・継続コメントを書く）
+## 新規起票・分割・作り直し（起票後に返った key で placeholder を置換してからリンク・継続コメントを書く）
 
 ### NEW-1 `[#30] New deliverable` — new
 - fields: parent=PRJ-10 / priority=None / due=2026-10-02 / labels=no-30,weekly-sync / assignee=None
@@ -57,7 +59,7 @@
 
 ## Definition of Done
 
-- [ ] Item — confirmed by user
+- [ ] Item
 ```
 
 #### DoD 出典（文字起こし抜粋）

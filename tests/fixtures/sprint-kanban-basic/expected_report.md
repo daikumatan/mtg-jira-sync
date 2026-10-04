@@ -1,6 +1,8 @@
 # Jira 同期ドライラン — 2026-07-09 Example 案件群（Kanban・1 週間スプリント）（**未承認・Jira 未変更**）
 
-- プロファイル: `example-sprint-kanban.md` / トラッカー URL: （未指定）
+- プロファイル: `example-sprint-kanban.md`
+- 会議種別: weekly
+- 対象エピック: KAN-5 / 系統ラベル: -
 - content: `content.json` / 提案設定: `proposals.json`
 
 ## 承認の受け方
@@ -23,7 +25,7 @@
 ### 2. フィールド差分（提案）
 - status: In Progress → **WAITING FOR CUSTOMER**（遷移ID 31）— 根拠: Customer 承認待ち
 
-### 3. Description: 本文は無変更＋ DoD 追記
+### 3. Description: Background 既存・挿入なし＋ DoD 追記
 ```markdown
 ## 目的
 疎通失敗要因の一つ。
@@ -37,7 +39,7 @@
 - [ ] 手順書ドラフトを Customer に送付
 ```
 
-#### ⚠ 候補（トラッカー未記載・未承認 → 今回は DoD に書かない。採用するなら番号で指示）
+#### ⚠ 候補（未承認 → 今回は DoD に書かない。採用するなら番号で指示）（トラッカー未記載）
 - C1. KAN-41 の型番を反映 — l.30-31
 
 #### DoD 出典（文字起こし抜粋・Jira には書かない）— 各項目の直下の発言が「〜します」型の約束か確認する
@@ -63,7 +65,7 @@
 #### DoD 出典（文字起こし抜粋・Jira には書かない）— 各項目の直下の発言が「〜します」型の約束か確認する
 - 担当者Bへ再依頼メールを送る — SYNC 7/9
 
-## 新規起票・分割・作り直し（`createJiraIssue` → 返った key で placeholder を置換してからリンク・継続コメントを書く）
+## 新規起票・分割・作り直し（起票後に返った key で placeholder を置換してからリンク・継続コメントを書く）
 
 ### NEW-1 `Survey Sheet の回答を Partner から回収` — new
 - fields: parent=KAN-15 / priority=None / due=2026-07-14 / labels=network,site-b / assignee=None
@@ -72,7 +74,7 @@
 ```markdown
 ## 目的
 
-Site Bの Site Survey。担当者C担当。
+* Site Bの Site Survey。担当者C担当。
 
 ## Definition of Done
 

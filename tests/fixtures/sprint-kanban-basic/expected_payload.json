@@ -1,11 +1,12 @@
 {
  "date": "2026-07-09",
  "links": [],
+ "meeting_type": "weekly",
  "new_tickets": [
   {
    "comment": null,
    "fields": {
-    "description": "## 目的\n\nSite Bの Site Survey。担当者C担当。\n\n## Definition of Done\n\n- [ ] Survey Sheet 回収\n\n## Nice to Have\n\n- [ ] 回答の不足箇所を Network Diagram に反映\n\n## 備考\n\n* 担当: 担当者C（※[External]のためアサイン不可）\n* Survey Sheet: [https://drive.example/x](https://drive.example/x)\n",
+    "description": "## 目的\n\n* Site Bの Site Survey。担当者C担当。\n\n## Definition of Done\n\n- [ ] Survey Sheet 回収\n\n## Nice to Have\n\n- [ ] 回答の不足箇所を Network Diagram に反映\n\n## 備考\n\n* 担当: 担当者C（※[External]のためアサイン不可）\n* Survey Sheet: [https://drive.example/x](https://drive.example/x)\n",
     "duedate": "2026-07-14",
     "labels": [
      "network",
@@ -22,6 +23,7 @@
    "transition": null
   }
  ],
+ "parent": "KAN-5",
  "profile": "example-sprint-kanban",
  "tickets": {
   "KAN-40": {

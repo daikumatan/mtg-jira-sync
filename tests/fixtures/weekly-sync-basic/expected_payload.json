@@ -1,11 +1,12 @@
 {
  "date": "2026-09-25",
  "links": [],
+ "meeting_type": "weekly",
  "new_tickets": [
   {
    "comment": null,
    "fields": {
-    "description": "## Background\n\n* Issue List: [9/25](https://example.com/sheet/2026-09-25)\n* Title: New\n\n## Definition of Done\n\n- [ ] Item — confirmed by user\n",
+    "description": "## Background\n\n* Issue List: [9/25](https://example.com/sheet/2026-09-25)\n* Title: New\n\n## Definition of Done\n\n- [ ] Item\n",
     "duedate": "2026-10-02",
     "labels": [
      "no-30",
@@ -22,6 +23,7 @@
    "transition": null
   }
  ],
+ "parent": "PRJ-10",
  "profile": "example-weekly-sync",
  "tickets": {
   "PRJ-40": {

@@ -4,7 +4,8 @@
 scripts/ を変更したら必ず回す。実案件の fixture はリポジトリの外に置き --fixtures-dir で追加する。
 
 ケース dir の構成:
-  case.json          {"profile": "<パス>", "date": "YYYY-MM-DD", "args": {"tracker_url": "...", "prev_links": {...}}}
+  case.json          {"profile": "<パス>", "date": "YYYY-MM-DD", "args": {"tracker_url": "...", "prev_links": {...},
+                                                                 "meeting_type": "weekly|internal|customer", "meeting_name": "...", "parent": "...", "track_label": "..."}}
                      profile はケース dir → リポジトリ root → 絶対パス の順で解決
   dump.json / content.json / proposals.json     必須
   tracker_scan.json / transcript.txt            任意（あれば渡す）
@@ -61,6 +62,9 @@ for c in cases:
         args = meta.get("args", {})
         if args.get("tracker_url"): cmd += ["--tracker-url", args["tracker_url"]]
         if args.get("prev_links"): cmd += ["--prev-links", json.dumps(args["prev_links"], ensure_ascii=False)]
+        for k in ("meeting_type", "meeting_name", "parent", "track_label"):
+            if args.get(k): cmd += ["--" + k.replace("_", "-"), args[k]]
+        cmd += ["--out-preview", str(Path(td) / "preview.md")]
         if (c / "tracker_scan.json").is_file(): cmd += ["--tracker-scan", str(c / "tracker_scan.json")]
         if (c / "transcript.txt").is_file(): cmd += ["--transcript", str(c / "transcript.txt")]
         r = subprocess.run(cmd, capture_output=True, text=True)

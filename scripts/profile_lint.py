@@ -54,6 +54,19 @@ for f in a.files:
     elif tr and rid not in {str(v) for v in tr.values()}: err.append(f"resolved_transition_id {rid} が transitions の値に無い")
     lt = get(d, "jira.link_types")
     if not isinstance(lt, list) or "Relates" not in lt: err.append("jira.link_types は Relates を含むリスト")
+    pars = get(d, "jira.parents") or {}
+    if not isinstance(pars, dict): err.append("jira.parents は {別名: KEY-nn} の辞書")
+    else:
+        for al, v in pars.items():
+            if pk and not str(v).startswith(pk + "-"): err.append(f"jira.parents.{al} {v!r} が project_key {pk} と食い違う")
+    for i, r in enumerate(get(d, "jira.placement") or []):
+        if not isinstance(r, dict): err.append(f"jira.placement[{i}] は辞書"); continue
+        kinds = [bool(r.get("summary") and r.get("parent")), bool(r.get("under") and r.get("forbid_summary")), bool(r.get("under") and r.get("require_link_under"))]
+        if sum(kinds) != 1: err.append(f"jira.placement[{i}] は summary+parent / under+forbid_summary / under+require_link_under のいずれか 1 種")
+        for kk in ("summary", "forbid_summary"):
+            if r.get(kk):
+                try: re.compile(r[kk])
+                except re.error as e: err.append(f"jira.placement[{i}].{kk} が正規表現として不正: {e}")
     # summary / labels
     rr = get(d, "summary.ref_regex"); rl = get(d, "labels.ref_label"); pr = get(d, "summary.prefix_regex")
     for name, rx in (("summary.ref_regex", rr), ("summary.prefix_regex", pr)):
@@ -66,6 +79,13 @@ for f in a.files:
         try: rl.format(n=1)
         except (KeyError, ValueError, IndexError): err.append(f"labels.ref_label {rl!r} は {{n}} を含む format 文字列")
     if not isinstance(get(d, "labels.fixed"), list): err.append("labels.fixed はリスト（空なら []）")
+    for kk in ("labels.track", "labels.meeting_type"):
+        v = get(d, kk)
+        if v is not None and not isinstance(v, dict): err.append(f"{kk} は辞書")
+    mt = get(d, "labels.meeting_type") or {}
+    if any(k not in ("weekly", "internal", "customer") for k in mt): err.append(f"labels.meeting_type のキーは weekly|internal|customer（現在 {list(mt)}）")
+    tr_ = get(d, "labels.track") or {}
+    if tr_ and pars and not set(tr_) <= (set(pars.values()) | {get(d, "jira.parent")}): warn.append(f"labels.track に jira.parents/parent に無いキーがある: {sorted(set(tr_) - set(pars.values()) - {get(d, 'jira.parent')})}")
     # parties
     ps = get(d, "parties") or []
     if not ps: err.append("parties が空（少なくとも自社 1 件）")
@@ -91,6 +111,16 @@ for f in a.files:
     secs = get(d, "description.sections") or {}
     for k in ("background", "dod", "materials"):
         if not secs.get(k): err.append(f"description.sections.{k} が空")
+    for k in secs:
+        if k not in ("purpose", "background", "dod", "deliverable_contents", "nice_to_have", "materials"): err.append(f"description.sections.{k} は未知のキー（purpose/background/dod/deliverable_contents/nice_to_have/materials）")
+    rules = get(d, "description.rules") or {}
+    for k in rules:
+        if k not in ("sections_strict", "background_std", "background_max", "background_line_chars", "dod_std", "dod_max", "done_evidence"): err.append(f"description.rules.{k} は未知のキー")
+    for k in ("background_std", "background_max", "background_line_chars", "dod_std", "dod_max"):
+        if rules.get(k) is not None and not (isinstance(rules[k], int) and rules[k] > 0): err.append(f"description.rules.{k} は正の整数")
+    if rules.get("background_std") and rules.get("background_max") and rules["background_std"] > rules["background_max"]: err.append("description.rules.background_std > background_max")
+    if rules.get("dod_std") and rules.get("dod_max") and rules["dod_std"] > rules["dod_max"]: err.append("description.rules.dod_std > dod_max")
+    if rules.get("sections_strict") and not secs.get("purpose"): warn.append("sections_strict だが description.sections.purpose 未定義（Purpose 節を使うなら定義）")
     if get(d, "description.title_line") is None: warn.append("description.title_line 未設定（既定 true）")
     if get(d, "meeting.tz_offset_hours") is None: warn.append("meeting.tz_offset_hours 未設定（既定 9）")
     # 本文 A〜F
